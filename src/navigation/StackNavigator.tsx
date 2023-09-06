@@ -4,6 +4,7 @@ import ArticleDetailsScreen from "../screens/ArticleDetailsScreen";
 import ArticlesListScreen from "../screens/ArticlesListScreen";
 import { Alert, TouchableOpacity, View } from "react-native";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
+import { colors } from "../library/colors";
 const HamburgerMenu = require("../assets/icons/hamburger-menu.svg").default;
 const LeftArrow = require("../assets/icons/left-arrow.svg").default;
 const Search = require("../assets/icons/search.svg").default;
@@ -27,10 +28,10 @@ const StackNavigator: React.FC<NavigationProps> = ({ navigation }) => {
         name="Articles_list"
         options={{
           title: "NY Times Most Popular",
-          headerTintColor: "#fff",
+          headerTintColor: colors.white,
           headerTitleAlign: "left",
           headerStyle: {
-            backgroundColor: "#52e3c4",
+            backgroundColor: colors.primary,
           },
           headerLeft: (props) => (
             <TouchableOpacity
@@ -38,7 +39,7 @@ const StackNavigator: React.FC<NavigationProps> = ({ navigation }) => {
               style={{ marginLeft: 12 }}
               onPress={() => navigation.openDrawer()}
             >
-              <HamburgerMenu fill={"#fff"} width={24} height={24} />
+              <HamburgerMenu fill={colors.white} width={24} height={24} />
             </TouchableOpacity>
           ),
           headerRight: (props) => (
@@ -47,14 +48,14 @@ const StackNavigator: React.FC<NavigationProps> = ({ navigation }) => {
                 {...props}
                 onPress={() => Alert.alert("Future search")}
               >
-                <Search stroke={"#fff"} width={24} height={24} />
+                <Search stroke={colors.white} width={24} height={24} />
               </TouchableOpacity>
               <TouchableOpacity
                 {...props}
                 style={{ marginLeft: 12 }}
                 onPress={() => Alert.alert("Future mini Menu")}
               >
-                <MenuVertical fill={"#fff"} width={24} height={24} />
+                <MenuVertical fill={colors.white} width={24} height={24} />
               </TouchableOpacity>
             </View>
           ),
@@ -65,10 +66,10 @@ const StackNavigator: React.FC<NavigationProps> = ({ navigation }) => {
         name="Article_Details"
         options={{
           title: "Articles Details",
-          headerTintColor: "#fff",
+          headerTintColor: colors.white,
           headerTitleAlign: "left",
           headerStyle: {
-            backgroundColor: "#52e3c4",
+            backgroundColor: colors.primary,
           },
           headerLeft: (props) => (
             <TouchableOpacity
@@ -76,7 +77,7 @@ const StackNavigator: React.FC<NavigationProps> = ({ navigation }) => {
               style={{ marginLeft: 12 }}
               onPress={() => navigation.goBack()}
             >
-              <LeftArrow width={24} height={24} fill={"#fff"} />
+              <LeftArrow width={24} height={24} fill={colors.white} />
             </TouchableOpacity>
           ),
         }}

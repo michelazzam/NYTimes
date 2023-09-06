@@ -1,15 +1,15 @@
-import { FlatList, Pressable, Text, View, useColorScheme } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import Record from '../components/Record';
-import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { BASE_URL, PUBLIC_KEY } from '@env';
+import { FlatList, Pressable, Text, View, useColorScheme } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import Record from "../components/Record";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
+import { getListofArticles } from "../utils/functions";
 
 interface MetaData {
   url: string;
 }
 interface MediaArray {
-  'media-metadata': [MetaData];
+  "media-metadata": [MetaData];
 }
 
 interface RecordData {
@@ -30,37 +30,23 @@ interface ArticlesListViewProps {
 }
 
 const ArticlesListView: React.FC<ArticlesListViewProps> = ({ navigation }) => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === "dark";
 
   const [data, setData] = useState<RecordData[]>([]); // Explicit type
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null); // Explicit type
 
   useEffect(() => {
-    fetch(
-      BASE_URL +
-        '/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=' +
-        PUBLIC_KEY
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((result: FetchResult) => {
-        setData(result.results); // Extracting 'results' from the fetched data
-        setLoading(false);
-      })
-      .catch((error: Error) => {
-        console.log(
-          BASE_URL +
-            '/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=' +
-            PUBLIC_KEY
-        );
-        setError(error);
-        setLoading(false);
-      });
+    const success = (result: FetchResult) => {
+      setData(result.results); // Extracting 'results' from the fetched data
+      setLoading(false);
+    };
+
+    const error = (error: Error) => {
+      setError(error);
+      setLoading(false);
+    };
+    getListofArticles(error, success);
   }, []);
 
   return (
@@ -79,10 +65,10 @@ const ArticlesListView: React.FC<ArticlesListViewProps> = ({ navigation }) => {
           renderItem={({ item }) => (
             <Pressable
               onPress={() => {
-                navigation.navigate('Article_Details', {
+                navigation.navigate("Article_Details", {
                   article: {
                     ...item,
-                    customUrl: item.media?.[0]?.['media-metadata']?.[0]?.url,
+                    customUrl: item.media?.[0]?.["media-metadata"]?.[0]?.url,
                   },
                 });
               }}
@@ -90,7 +76,7 @@ const ArticlesListView: React.FC<ArticlesListViewProps> = ({ navigation }) => {
               <Record
                 title={item.title}
                 byLine={item.byline}
-                imageUrl={item.media?.[0]?.['media-metadata']?.[0]?.url}
+                imageUrl={item.media?.[0]?.["media-metadata"]?.[0]?.url}
                 date={item.published_date}
                 source={item.source}
               />

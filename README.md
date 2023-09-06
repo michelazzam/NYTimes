@@ -12,6 +12,9 @@ This project replicates features of the NY Times using React Native and follows 
 | |
 | |-- /components
 | |
+| |-- /library
+| | |-- assets.js
+| |
 | |-- /views
 | |
 | |-- /navigation
@@ -19,6 +22,11 @@ This project replicates features of the NY Times using React Native and follows 
 | | |-- StackNavigator.js
 | |
 | |-- /screens
+| |
+| |-- /store
+| | |-- / actions
+| | |-- / reducers
+| | |-- Store.js
 | |
 | |-- App.js
 |
@@ -110,7 +118,3 @@ react-native run-android or npm run android
 - **Build Issues**: Ensure Xcode and Android Studio are correctly set up. For Android, an emulator or device should be running. For iOS, select an appropriate simulator.
 
 - **Dependencies**: If there are issues, delete `node_modules` and either `package-lock.json` or `yarn.lock`. Then, run `npm install` or `yarn install`.
-
-## Further Reading
-
-- [React Native Official Documentation](https://reactnative.dev/docs/getting-started).

@@ -1,0 +1,17 @@
+export const colors = {
+  primary: "#52e3c4",
+  white: "#fff",
+  red: "#8B0000",
+  green: "#008000",
+  blue: "#0000FF",
+  black: "#000000",
+  placeholder: "#000010",
+  grey: "#707070",
+  yellow: "#FFFF00",
+  seashell: "#FFF5EE",
+  inputRed: "#8B0600",
+  orange: "#ffffff",
+  inputGrey: "#D9D9D9",
+  buttonGrey: "#4F4E50",
+  error: "#FF0000",
+};

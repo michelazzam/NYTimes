@@ -1,7 +1,12 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
-import { RouteProp } from "@react-navigation/native";
+import { NavigationProp, RouteProp } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { colors } from "../library/colors";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite } from "../store/actions/userActions";
 const Calendar = require("../assets/icons/calendar.svg").default;
+const Heart = require("../assets/icons/heart.svg").default;
 
 interface Article {
   title: string;
@@ -9,6 +14,7 @@ interface Article {
   abstract: string;
   byline: string;
   published_date: string;
+  id: string;
 }
 
 interface RouteParams {
@@ -17,11 +23,22 @@ interface RouteParams {
 
 interface ArticleDetailsProps {
   route: RouteProp<any, any>;
+  navigation: NavigationProp<any, any>;
 }
 
-const ArticleDetailsScreen: React.FC<ArticleDetailsProps> = ({ route }) => {
-  const { title, customUrl, abstract, byline, published_date } =
+const ArticleDetailsScreen: React.FC<ArticleDetailsProps> = ({
+  route,
+  navigation,
+}) => {
+  const { id, title, customUrl, abstract, byline, published_date } =
     route?.params?.article || {};
+  const dispatch = useDispatch();
+
+  const favorites = useSelector((state: any) => state.user.favorite);
+
+  const like = () => {
+    dispatch(addFavorite(id));
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -33,6 +50,15 @@ const ArticleDetailsScreen: React.FC<ArticleDetailsProps> = ({ route }) => {
           <Calendar width={24} height={24} stroke={"#808080"} />
           <Text style={styles.date}>{published_date}</Text>
         </View>
+      </View>
+      <View style={styles.like}>
+        <TouchableOpacity style={{ marginLeft: 12 }} onPress={like}>
+          <Heart
+            width={44}
+            height={44}
+            fill={favorites.includes(id) ? colors.red : colors.white}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -83,5 +109,11 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     fontSize: 14,
     color: "gray",
+  },
+  like: {
+    marginTop: "10%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
