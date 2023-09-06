@@ -29,6 +29,12 @@ interface ArticlesListViewProps {
   navigation: DrawerNavigationProp<any, any>;
 }
 
+/**
+ *
+ * Fetching data from the API and rendering the articles list screen.
+ * In here I used the Record component to render the articles list screen.
+ *
+ */
 const ArticlesListView: React.FC<ArticlesListViewProps> = ({ navigation }) => {
   const isDarkMode = useColorScheme() === "dark";
 

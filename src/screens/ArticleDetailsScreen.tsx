@@ -23,13 +23,14 @@ interface RouteParams {
 
 interface ArticleDetailsProps {
   route: RouteProp<any, any>;
-  navigation: NavigationProp<any, any>;
 }
 
-const ArticleDetailsScreen: React.FC<ArticleDetailsProps> = ({
-  route,
-  navigation,
-}) => {
+/**
+ *
+ * This component is used to render the article details screen.
+ * The user can like the current article by clicking on the heart icon.
+ */
+const ArticleDetailsScreen: React.FC<ArticleDetailsProps> = ({ route }) => {
   const { id, title, customUrl, abstract, byline, published_date } =
     route?.params?.article || {};
   const dispatch = useDispatch();

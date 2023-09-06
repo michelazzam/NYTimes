@@ -1,5 +1,6 @@
 import { BASE_URL, PUBLIC_KEY } from "@env";
 
+// Get list of articles
 const getListofArticles = async (errorResp: Function, success: Function) => {
   fetch(
     BASE_URL +

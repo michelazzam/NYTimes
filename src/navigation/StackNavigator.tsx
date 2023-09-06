@@ -21,6 +21,11 @@ type NavigationProps = {
 
 const Stack = createStackNavigator<RootStackParamList>();
 
+/**
+ *
+ * Stack Navigator is used to render the stack navigation.
+ * the different screen accross the same drawer.
+ */
 const StackNavigator: React.FC<NavigationProps> = ({ navigation }) => {
   return (
     <Stack.Navigator initialRouteName="Articles_list">

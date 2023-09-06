@@ -5,6 +5,10 @@ import StackNavigator from "./StackNavigator";
 
 const Drawer = createDrawerNavigator();
 
+/**
+ *
+ * Drawer Navigator is used to render the side drawer navigation.
+ */
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator

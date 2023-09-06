@@ -9,6 +9,10 @@ interface RecordData {
   date: string;
   source: string;
 }
+/**
+ *
+ * This component is used to render a single record in the list.
+ */
 const Record = ({ title, byLine, imageUrl, date, source }: RecordData) => {
   // const dateString = new Date(date);
   return (
