@@ -1,0 +1,57 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Bundling
+/android/app/build/
+/ios/build/
+/ios/Pods/
+
+# Misc
+*.log*
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.env
+
+# Watchman config
+.watchmanconfig
+
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+#
+## Build generated
+build/
+DerivedData/
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# Android/IntelliJ
+#
+# .gitignore contributors: remember to update Global/AndroidStudio.gitignore, Global/IntelliJ.gitignore
+#
+## Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
+## Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+##
+## Exclude project configuration files and directories
+.idea/
+
+# VS Code
+.vscode/
