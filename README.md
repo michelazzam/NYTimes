@@ -1,6 +1,11 @@
 # NY Times React Native Project
 
-This project replicates features of the NY Times using React Native and follows the MVVM (Model-View-ViewModel) architectural pattern.
+This project follows the MVVM (Model-View-ViewModel) architectural pattern to a certain extent:
+
+- Data is fetched from an external API.
+- Data is rendered within the app.
+- After rendering the data, it is used to check if the user already like the article and the data are transferred to a different screen.
+- Redux is utilized to store user data across different screens.
 
 ## Directory Structure
 
